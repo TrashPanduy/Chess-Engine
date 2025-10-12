@@ -3,6 +3,7 @@
 
 class VulkanHelper{
 
+
 public:
 	bool debugMode = false;
 
@@ -14,7 +15,6 @@ public:
 		default:                     return "Unknown";
 		}
 	}
-
 
 	void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
 	VkCommandBuffer beginSingleTimeCommands();

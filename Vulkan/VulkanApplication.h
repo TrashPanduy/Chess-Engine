@@ -22,9 +22,11 @@ public:
     Team whoWon() {
         return Gameboard.Who_Tf_Won();
     }
+
 protected:
     GameState gameState = GameState::Main_Menu;
     Game_Board Gameboard;
+
 private:
 
     GLFWwindow* window;

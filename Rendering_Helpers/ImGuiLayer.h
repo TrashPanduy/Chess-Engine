@@ -1,5 +1,6 @@
 #pragma once
-#include "common.h"
+#include "TextureImage.h"
+
 
 class ImGuiLayer{
 public:
@@ -14,6 +15,10 @@ public:
     void set_escape_menu_state(bool state) {
         escape_menu_active = state;
     }
+
+    TextureImage MenuBackground;
+    ImTextureID backgroundTexture;
+
 
 private:
     void createDescriptorPool();

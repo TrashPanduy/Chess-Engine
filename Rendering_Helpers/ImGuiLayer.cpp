@@ -40,6 +40,9 @@ void ImGuiLayer::init(GLFWwindow* window, VkInstance instance, VkDevice logical_
     createDescriptorPool();
     ImGui_ImplGlfw_InitForVulkan(window, true);
 
+    MenuBackground.Load("textures/MenuBackground.png");
+    backgroundTexture = (ImTextureID)MenuBackground.descriptorSet;
+
     ImGui_ImplVulkan_InitInfo init_info = {};
     init_info.ApiVersion = VK_API_VERSION_1_4;
     init_info.Instance = instance;
@@ -86,107 +89,117 @@ void ImGuiLayer::cleanup() {
     vkDestroyDescriptorPool(device, imguiDescriptorPool, nullptr);
 }
 
-void ImGuiLayer::genStartScreen(GLFWwindow* window, GameState& gameState) {
-    int display_w, display_h;
-    glfwGetFramebufferSize(window, &display_w, &display_h);
+void ImGuiLayer::genStartScreen(GLFWwindow* window, GameState& gameState) {  
+   int display_w, display_h;  
+   glfwGetFramebufferSize(window, &display_w, &display_h);  
 
-    // Update ImGui display size before newFrame
-    ImGuiIO& io = ImGui::GetIO();
-    io.DisplaySize = ImVec2((float)display_w, (float)display_h);
+   // Update ImGui display size before newFrame  
+   ImGuiIO& io = ImGui::GetIO();  
+   io.DisplaySize = ImVec2((float)display_w, (float)display_h);  
 
-    VulkanApplication* app = reinterpret_cast<VulkanApplication*>(glfwGetWindowUserPointer(window));
+   VulkanApplication* app = reinterpret_cast<VulkanApplication*>(glfwGetWindowUserPointer(window));  
 
-    // Start new frame *before* UI code
-    newFrame();
+   // Start new frame *before* UI code  
+   newFrame();  
 
-    if (gameState == GameState::Main_Menu) {
-        // Fullscreen transparent background window
-        ImGuiWindowFlags window_flags =
-            ImGuiWindowFlags_NoTitleBar |
-            ImGuiWindowFlags_NoResize |
-            ImGuiWindowFlags_NoMove |
-            ImGuiWindowFlags_NoCollapse |
-            ImGuiWindowFlags_NoScrollbar |
-            ImGuiWindowFlags_NoScrollWithMouse |
-            ImGuiWindowFlags_NoBringToFrontOnFocus |
-            ImGuiWindowFlags_NoNavFocus;
+   if (gameState == GameState::Main_Menu) {  
+       // Fullscreen transparent background window  
+       ImGuiWindowFlags window_flags =  
+           ImGuiWindowFlags_NoTitleBar |  
+           ImGuiWindowFlags_NoResize |  
+           ImGuiWindowFlags_NoMove |  
+           ImGuiWindowFlags_NoCollapse |  
+           ImGuiWindowFlags_NoScrollbar |  
+           ImGuiWindowFlags_NoScrollWithMouse |  
+           ImGuiWindowFlags_NoBringToFrontOnFocus |  
+           ImGuiWindowFlags_NoBackground |
+           ImGuiWindowFlags_NoNavFocus; 
 
-        ImGui::SetNextWindowPos(ImVec2(0, 0));
-        ImGui::SetNextWindowSize(ImVec2((float)display_w, (float)display_h));
-        ImGui::SetNextWindowBgAlpha(1.0f);
+       ImGui::SetNextWindowPos(ImVec2(0, 0));  
+       ImGui::SetNextWindowSize(ImVec2((float)display_w, (float)display_h));  
+       ImGui::SetNextWindowBgAlpha(1.0f);  
+       // Add background image  
+       ImGui::GetBackgroundDrawList()->AddImage(  
+           backgroundTexture,
+           ImVec2(0, 0),  
+           ImVec2((float)display_w, (float)display_h)  
+       );  
 
-        ImGui::Begin("Main Menu", nullptr, window_flags);
+       ImGui::Begin("Main Menu", nullptr, window_flags);  
 
-        // Button layout
-        ImVec2 button_size(200, 60);
-        float total_height = button_size.y * 2 + 40.0f; // 2 buttons + spacing
-        float start_y = (io.DisplaySize.y - total_height) * 0.5f;
-        ImGui::SetCursorPos(ImVec2((io.DisplaySize.x - button_size.x) * 0.5f, start_y));
-        if (ImGui::Button("Vs AI", button_size)) {
-            app->set_AI_Team(Black,true);
-            gameState = in_Game;
-        }
-        ImGui::SetCursorPos(ImVec2((io.DisplaySize.x - button_size.x) * 0.5f, start_y + button_size.y+10));
-        if (ImGui::Button("Co-Op", button_size)) {
-            app->set_AI_Team(Null,false);
-            gameState = in_Game;
-        }
+       // Button layout  
+       ImVec2 button_size(200, 60);  
+       float total_height = button_size.y * 2 + 40.0f; // 2 buttons + spacing  
+       float start_y = (io.DisplaySize.y - total_height) * 0.5f;  
 
-        ImGui::SetCursorPos(ImVec2((io.DisplaySize.x - button_size.x) * 0.5f, start_y + button_size.y + 80.0f));
-        if (ImGui::Button("Exit", button_size)) {
-            glfwSetWindowShouldClose(window, GLFW_TRUE);
-        }
+       // Push custom style: make button fully opaque (alpha = 1.0)
+       ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.4f, 0.8f, 1.0f)); // Background
+       ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.5f, 0.9f, 1.0f)); // Hovered
+       ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.1f, 0.3f, 0.7f, 1.0f)); // Pressed
 
-        ImGui::End();
-    }
-    else if (gameState == GameState::End_Screen) {
-        ImGuiWindowFlags window_flags =
-            ImGuiWindowFlags_NoTitleBar |
-            ImGuiWindowFlags_NoResize |
-            ImGuiWindowFlags_NoBringToFrontOnFocus |
-            ImGuiWindowFlags_NoNavFocus;
+       ImGui::SetCursorPos(ImVec2((io.DisplaySize.x - button_size.x) * 0.5f, start_y));  
+       if (ImGui::Button("Vs AI", button_size)) {  
+           app->set_AI_Team(Black, true);  
+           gameState = in_Game;  
+       }  
+       ImGui::SetCursorPos(ImVec2((io.DisplaySize.x - button_size.x) * 0.5f, start_y + button_size.y + 10));  
+       if (ImGui::Button("Co-Op", button_size)) {  
+           app->set_AI_Team(Null, false);  
+           gameState = in_Game;  
+       }  
 
-        ImGui::SetNextWindowPos(ImVec2((display_w - display_w / 2) * 0.5f, (display_h - display_h / 2) * 0.5f));
-        ImGui::SetNextWindowSize(ImVec2((float)display_w / 2, (float)display_h / 2));
-        ImGui::SetNextWindowBgAlpha(0.75f);
+       ImGui::SetCursorPos(ImVec2((io.DisplaySize.x - button_size.x) * 0.5f, start_y + button_size.y + 80.0f));  
+       if (ImGui::Button("Exit", button_size)) {  
+           glfwSetWindowShouldClose(window, GLFW_TRUE);  
+       }  
+       // Restore previous style
+       ImGui::PopStyleColor(3);
 
-        ImGui::Begin("Game Over", nullptr, window_flags);
-        ImVec2 button_size(150, 45);
-        ImVec2 window_size = ImGui::GetWindowSize();
-        float total_height = button_size.y * 3 + 80.0f; // 3 buttons + spacing
-        float start_y = (window_size.y - total_height) * 0.5f;
+       ImGui::End();  
+   }  
+   else if (gameState == GameState::End_Screen) {  
+       ImGuiWindowFlags window_flags =  
+           ImGuiWindowFlags_NoTitleBar |  
+           ImGuiWindowFlags_NoResize |  
+           ImGuiWindowFlags_NoBringToFrontOnFocus |  
+           ImGuiWindowFlags_NoNavFocus;  
 
-        // Horizontal center based on window width
-        float center_x = (window_size.x - button_size.x) * 0.5f;
+       ImGui::SetNextWindowPos(ImVec2((display_w - display_w / 2) * 0.5f, (display_h - display_h / 2) * 0.5f));  
+       ImGui::SetNextWindowSize(ImVec2((float)display_w / 2, (float)display_h / 2));  
+       ImGui::SetNextWindowBgAlpha(0.75f);  
 
-        
-        Team winner = app->whoWon();
-        std::string winString = TeamToString(winner);
-        std::string message = "Winning Team: " + winString;
+       ImGui::Begin("Game Over", nullptr, window_flags);  
+       ImVec2 button_size(150, 45);  
+       ImVec2 window_size = ImGui::GetWindowSize();  
+       float total_height = button_size.y * 3 + 80.0f; // 3 buttons + spacing  
+       float start_y = (window_size.y - total_height) * 0.5f;  
 
-        ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), "%s", message.c_str());
+       // Horizontal center based on window width  
+       float center_x = (window_size.x - button_size.x) * 0.5f;  
 
+       Team winner = app->whoWon();  
+       std::string winString = TeamToString(winner);  
+       std::string message = "Winning Team: " + winString;  
 
-        VulkanApplication* app = reinterpret_cast<VulkanApplication*>(glfwGetWindowUserPointer(window));
+       ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), "%s", message.c_str());  
 
-        ImGui::SetCursorPos(ImVec2(center_x, start_y));
-        if (ImGui::Button("Rematch", button_size)) {
-            app->cancelAI();
-            gameState = in_Game;
-            app->resetGameboard();
-            
-        }
+       ImGui::SetCursorPos(ImVec2(center_x, start_y));  
+       if (ImGui::Button("Rematch", button_size)) {  
+           app->cancelAI();  
+           gameState = in_Game;  
+           app->resetGameboard();  
+       }  
 
-        ImGui::SetCursorPos(ImVec2(center_x, start_y + button_size.y + 10.0f));
-        if (ImGui::Button("Exit To Menu", button_size)) {
-            app->cancelAI();
-            gameState = Main_Menu;
-        }
-        ImGui::End();   
-    }
-    else if(gameState == in_Game){
-        escape_menu(window, gameState);
-    }
+       ImGui::SetCursorPos(ImVec2(center_x, start_y + button_size.y + 10.0f));  
+       if (ImGui::Button("Exit To Menu", button_size)) {  
+           app->cancelAI();  
+           gameState = Main_Menu;  
+       }  
+       ImGui::End();  
+   }  
+   else if (gameState == in_Game) {  
+       escape_menu(window, gameState);  
+   }  
 }
 
 void ImGuiLayer::escape_menu(GLFWwindow* window, GameState& gameState) {

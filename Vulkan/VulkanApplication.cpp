@@ -831,7 +831,7 @@ void VulkanApplication::createDebugPipeline() {
 }
 
 void VulkanApplication::createDescriptorPool() {
-    const uint32_t textureDescriptorCount = 37;  
+    const uint32_t textureDescriptorCount = 40;  
     const uint32_t uniformDescriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
     std::array<VkDescriptorPoolSize, 2> poolSizes{};
