@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Visual Studio\Libraries\glm;C:\Visual Studio\Libraries\glfw-3.4.bin.WIN64\include;C:\VulkanSDK\1.4.304.1\Include;C:\Visual Studio\Libraries\stb-master\stb-master;C:\Visual Studio\Libraries\tinyobjloader-release\tinyobjloader-release;C:\Visual Studio\Libraries\imgui;C:\Visual Studio\Libraries\imgui\backends</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Visual Studio\Libraries\glm;C:\Visual Studio\Libraries\glfw-3.4.bin.WIN64\include;C:\VulkanSDK\1.4.304.1\Include;C:\Visual Studio\Libraries\stb-master\stb-master;C:\Visual Studio\Libraries\tinyobjloader-release\tinyobjloader-release;C:\Visual Studio\Libraries\imgui;C:\Visual Studio\Libraries\imgui\backends;C:\Visual Studio\Projects\VulkanTest;C:\Visual Studio\Projects\VulkanTest\Rendering_Helpers;C:\Visual Studio\Projects\VulkanTest\Game_Logic;C:\Visual Studio\Projects\VulkanTest\Vulkan</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Visual Studio\Libraries\glm;C:\Visual Studio\Libraries\glfw-3.4.bin.WIN64\include;C:\VulkanSDK\1.4.304.1\Include;C:\Visual Studio\Libraries\stb-master\stb-master;C:\Visual Studio\Libraries\tinyobjloader-release\tinyobjloader-release;C:\Visual Studio\Libraries\imgui;C:\Visual Studio\Libraries\imgui\backends</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Visual Studio\Libraries\glm;C:\Visual Studio\Libraries\glfw-3.4.bin.WIN64\include;C:\VulkanSDK\1.4.304.1\Include;C:\Visual Studio\Libraries\stb-master\stb-master;C:\Visual Studio\Libraries\tinyobjloader-release\tinyobjloader-release;C:\Visual Studio\Libraries\imgui;C:\Visual Studio\Libraries\imgui\backends;C:\Visual Studio\Projects\VulkanTest;C:\Visual Studio\Projects\VulkanTest\Rendering_Helpers;C:\Visual Studio\Projects\VulkanTest\Game_Logic;C:\Visual Studio\Projects\VulkanTest\Vulkan</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Visual Studio\Libraries\glm;C:\Visual Studio\Libraries\glfw-3.4.bin.WIN64\include;C:\VulkanSDK\1.4.304.1\Include;C:\Visual Studio\Libraries\stb-master\stb-master;C:\Visual Studio\Libraries\tinyobjloader-release\tinyobjloader-release;C:\Visual Studio\Libraries\imgui;C:\Visual Studio\Libraries\imgui\backends</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Visual Studio\Libraries\glm;C:\Visual Studio\Libraries\glfw-3.4.bin.WIN64\include;C:\VulkanSDK\1.4.304.1\Include;C:\Visual Studio\Libraries\stb-master\stb-master;C:\Visual Studio\Libraries\tinyobjloader-release\tinyobjloader-release;C:\Visual Studio\Libraries\imgui;C:\Visual Studio\Libraries\imgui\backends;C:\Visual Studio\Projects\VulkanTest;C:\Visual Studio\Projects\VulkanTest\Rendering_Helpers;C:\Visual Studio\Projects\VulkanTest\Game_Logic;C:\Visual Studio\Projects\VulkanTest\Vulkan</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Visual Studio\Libraries\glm;C:\Visual Studio\Libraries\glfw-3.4.bin.WIN64\include;C:\VulkanSDK\1.4.304.1\Include;C:\Visual Studio\Libraries\stb-master\stb-master;C:\Visual Studio\Libraries\tinyobjloader-release\tinyobjloader-release;C:\Visual Studio\Libraries\imgui;C:\Visual Studio\Libraries\imgui\backends</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Visual Studio\Libraries\glm;C:\Visual Studio\Libraries\glfw-3.4.bin.WIN64\include;C:\VulkanSDK\1.4.304.1\Include;C:\Visual Studio\Libraries\stb-master\stb-master;C:\Visual Studio\Libraries\tinyobjloader-release\tinyobjloader-release;C:\Visual Studio\Libraries\imgui;C:\Visual Studio\Libraries\imgui\backends;C:\Visual Studio\Projects\VulkanTest;C:\Visual Studio\Projects\VulkanTest\Rendering_Helpers;C:\Visual Studio\Projects\VulkanTest\Game_Logic;C:\Visual Studio\Projects\VulkanTest\Vulkan</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -143,11 +143,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Chess_Bot.cpp" />
-    <ClCompile Include="Chess_Logic.cpp" />
     <ClCompile Include="common.cpp" />
-    <ClCompile Include="Game_Board.cpp" />
-    <ClCompile Include="ImGuiLayer.cpp" />
+    <ClCompile Include="Game_Logic\Chess_Bot.cpp" />
+    <ClCompile Include="Game_Logic\Chess_Logic.cpp" />
+    <ClCompile Include="Game_Logic\Game_Board.cpp" />
+    <ClCompile Include="Game_Logic\inputHandling.cpp" />
     <ClCompile Include="imgUI_CPP\imgui.cpp" />
     <ClCompile Include="imgUI_CPP\imgui_demo.cpp" />
     <ClCompile Include="imgUI_CPP\imgui_draw.cpp" />
@@ -155,12 +155,12 @@
     <ClCompile Include="imgUI_CPP\imgui_impl_vulkan.cpp" />
     <ClCompile Include="imgUI_CPP\imgui_tables.cpp" />
     <ClCompile Include="imgUI_CPP\imgui_widgets.cpp" />
-    <ClCompile Include="inputHandling.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ModelLoader.cpp" />
-    <ClCompile Include="TextureImage.cpp" />
-    <ClCompile Include="VulkanApplication.cpp" />
-    <ClCompile Include="VulkanHelper.cpp" />
+    <ClCompile Include="Rendering_Helpers\ImGuiLayer.cpp" />
+    <ClCompile Include="Rendering_Helpers\ModelLoader.cpp" />
+    <ClCompile Include="Rendering_Helpers\TextureImage.cpp" />
+    <ClCompile Include="Vulkan\VulkanApplication.cpp" />
+    <ClCompile Include="Vulkan\VulkanHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="compile.bat" />
@@ -171,18 +171,18 @@
     <None Include="shaders\shader.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="board_class.h" />
-    <ClInclude Include="Chess_Logic.h" />
-    <ClInclude Include="common.h" />
-    <ClInclude Include="Game_Board.h" />
-    <ClInclude Include="ImGuiLayer.h" />
-    <ClInclude Include="ModelLoader.h" />
-    <ClInclude Include="TextureImage.h" />
-    <ClInclude Include="VulkanApplication.h" />
-    <ClInclude Include="VulkanHelper.h" />
+    <Text Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="LICENSE.txt" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="Game_Logic\board_class.h" />
+    <ClInclude Include="Game_Logic\Chess_Logic.h" />
+    <ClInclude Include="Game_Logic\Game_Board.h" />
+    <ClInclude Include="Rendering_Helpers\ImGuiLayer.h" />
+    <ClInclude Include="Rendering_Helpers\ModelLoader.h" />
+    <ClInclude Include="Rendering_Helpers\TextureImage.h" />
+    <ClInclude Include="Vulkan\VulkanApplication.h" />
+    <ClInclude Include="Vulkan\VulkanHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

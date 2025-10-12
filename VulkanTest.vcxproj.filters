@@ -15,6 +15,15 @@
     <Filter Include="Source Files\imgui">
       <UniqueIdentifier>{67c419fb-856e-4675-a218-5b9a55833003}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Rendering_Helpers">
+      <UniqueIdentifier>{fcc09d24-c580-493d-ac1a-f21b9bae42d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Vulkan">
+      <UniqueIdentifier>{f64216b1-53cc-4f73-ad7d-19dc785a97aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game_Logic">
+      <UniqueIdentifier>{2021dc3b-b107-4def-bf1b-45796c1ca659}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgUI_CPP\imgui_widgets.cpp">
@@ -38,37 +47,37 @@
     <ClCompile Include="imgUI_CPP\imgui_tables.cpp">
       <Filter>Source Files\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Chess_Bot.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Game_Logic\Chess_Bot.cpp">
+      <Filter>Source Files\Game_Logic</Filter>
     </ClCompile>
-    <ClCompile Include="Chess_Logic.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Game_Logic\Chess_Logic.cpp">
+      <Filter>Source Files\Game_Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Logic\Game_Board.cpp">
+      <Filter>Source Files\Game_Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Logic\inputHandling.cpp">
+      <Filter>Source Files\Game_Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Vulkan\VulkanApplication.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="Vulkan\VulkanHelper.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering_Helpers\ImGuiLayer.cpp">
+      <Filter>Source Files\Rendering_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering_Helpers\ModelLoader.cpp">
+      <Filter>Source Files\Rendering_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering_Helpers\TextureImage.cpp">
+      <Filter>Source Files\Rendering_Helpers</Filter>
     </ClCompile>
     <ClCompile Include="common.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Board.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGuiLayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="inputHandling.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureImage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VulkanApplication.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VulkanHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,37 +102,37 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="board_class.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Chess_Logic.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Board.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGuiLayer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelLoader.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureImage.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VulkanApplication.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VulkanHelper.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="LICENSE.txt">
       <Filter>Source Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game_Logic\board_class.h">
+      <Filter>Source Files\Game_Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Logic\Chess_Logic.h">
+      <Filter>Source Files\Game_Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Logic\Game_Board.h">
+      <Filter>Source Files\Game_Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Vulkan\VulkanApplication.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="Vulkan\VulkanHelper.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering_Helpers\ImGuiLayer.h">
+      <Filter>Source Files\Rendering_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering_Helpers\ModelLoader.h">
+      <Filter>Source Files\Rendering_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering_Helpers\TextureImage.h">
+      <Filter>Source Files\Rendering_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
