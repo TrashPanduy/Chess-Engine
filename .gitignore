@@ -14,13 +14,6 @@ CMakeFiles/
 Makefile
 cmake_install.cmake
 
-# Visual Studio generated files
-*.sln
-*.vcxproj
-*.vcxproj.*
-*.user
-*.filters
-
 # Intermediate build outputs
 [Bb]in/
 [Oo]bj/
